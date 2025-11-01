@@ -1,0 +1,18 @@
+{
+    "compilerOptions": {
+        "target": "ESNext",
+        "module": "ESNext",
+        "moduleResolution": "node",
+        "rootDir": "./src",
+        "strict": true,
+        "outDir": "./dist",
+        "noImplicitAny": true,
+        "inlineSourceMap": true,
+        "inlineSources": true,
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true
+    },
+    "include": ["src/**/*.ts", "src/config/vitest.config.ts"],
+    "exclude": ["node_modules", "dist"]
+}
