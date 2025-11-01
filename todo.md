@@ -23,7 +23,7 @@ A focused 4-day plan to build a working SSI Wallet prototype for college project
 - [ ] Install dependencies: `hardhat`, `@nomicfoundation/hardhat-toolbox`, `@openzeppelin/contracts`
 - [ ] Configure `hardhat.config.js` for Sepolia testnet
 - [ ] Get Sepolia ETH from faucet
-- [ ] Setup Alchemy/Infura RPC provider
+- [ ] Setup Infura RPC provider
 
 #### Task 1.3: Smart Contract Development
 
