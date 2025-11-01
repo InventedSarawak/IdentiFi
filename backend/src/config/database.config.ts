@@ -4,7 +4,7 @@ import { DB_NAME } from '../constants'
 
 const connectDB = async () => {
     try {
-        const mongoUri = process.env.MONGODB_URI
+        const mongoUri = process.env.MONGODB_URI || `mongodb://localhost:27017/${DB_NAME}`
         if (!mongoUri) throw new Error('MONGODB_URI is not defined in the environment variables')
         const connectionInstance = await mongoose.connect(`${mongoUri}/${DB_NAME}`)
         console.log(`\nMongoDB Connected! \nDB Host: ${connectionInstance.connection.host}`)

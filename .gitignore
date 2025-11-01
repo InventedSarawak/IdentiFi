@@ -40,3 +40,4 @@ src/styles/main.css
 # Build files
 build/
 dist/
+artifacts/
