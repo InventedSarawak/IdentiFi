@@ -13,10 +13,10 @@ describe('AccessControl', function () {
     })
 
     it('should grant and revoke access', async () => {
-        await accessControl.connect(user).grantAccess(verifier.address, 'email')
-        expect(await accessControl.hasAccess(verifier.address, user.address, 'email')).to.be.true
+        await accessControl.connect(user).grantAccess(verifier.address, 'email', 0, '')
+        expect(await accessControl.hasAccess(user.address, verifier.address, 'email')).to.be.true
 
         await accessControl.connect(user).revokeAccess(verifier.address, 'email')
-        expect(await accessControl.hasAccess(verifier.address, user.address, 'email')).to.be.false
+        expect(await accessControl.hasAccess(user.address, verifier.address, 'email')).to.be.false
     })
 })

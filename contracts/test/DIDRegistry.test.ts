@@ -13,20 +13,23 @@ describe('DIDRegistry', function () {
     })
 
     it('should register a DID', async () => {
-        await didRegistry.connect(user).registerDID('did:identifi:user1', 'pubkey123', 'ipfs://doc')
-        const doc = await didRegistry.getDID('did:identifi:user1')
-        expect(doc.controller).to.equal(user.address)
+        await didRegistry.connect(user).registerDID('did:identifi:user1', 'ipfs://doc', 'pubkey123')
+        const result = await didRegistry.resolveDID('did:identifi:user1')
+        expect(result.controller).to.equal(user.address)
     })
 
-    it('should allow controller to update public key', async () => {
-        await didRegistry.connect(user).registerDID('did:identifi:user2', 'pubkey123', 'ipfs://doc')
-        await didRegistry.connect(user).updatePublicKey('did:identifi:user2', 'newKey')
-        const doc = await didRegistry.getDID('did:identifi:user2')
-        expect(doc.publicKey).to.equal('newKey')
+    it('should allow controller to update DID', async () => {
+        await didRegistry.connect(user).registerDID('did:identifi:user2', 'ipfs://doc', 'pubkey123')
+        await didRegistry.connect(user).updateDID('did:identifi:user2', 'ipfs://newdoc', 'newKey')
+        const result = await didRegistry.resolveDID('did:identifi:user2')
+        expect(result.publicKey).to.equal('newKey')
+        expect(result.cid).to.equal('ipfs://newdoc')
     })
 
     it('should not allow non-controller to update', async () => {
-        await didRegistry.connect(user).registerDID('did:identifi:user3', 'pubkey123', 'ipfs://doc')
-        await expect(didRegistry.connect(owner).updatePublicKey('did:identifi:user3', 'hackerKey')).to.be.reverted
+        await didRegistry.connect(user).registerDID('did:identifi:user3', 'ipfs://doc', 'pubkey123')
+        await expect(
+            didRegistry.connect(owner).updateDID('did:identifi:user3', 'ipfs://hack', 'hackerKey')
+        ).to.be.revertedWith('DIDRegistry: not controller')
     })
 })

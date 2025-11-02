@@ -15,9 +15,26 @@ describe('Recovery', function () {
     })
 
     it('should set guardians and perform recovery', async () => {
+        // First register a DID in the DIDRegistry
+        const did = 'did:identifi:user1'
+        await didRegistry.connect(user).registerDID(did, 'ipfs://doc', 'oldPubKey')
+
+        // Set Recovery as the recovery manager
+        await didRegistry.setRecoveryManager(recovery.target)
+
+        // Set guardians
         await recovery.connect(user).setGuardians([guardian1.address, guardian2.address], 2)
-        await recovery.connect(guardian1).approveRecovery(user.address, 'newPubKey123')
-        await recovery.connect(guardian2).approveRecovery(user.address, 'newPubKey123')
-        await expect(recovery.finalizeRecovery(user.address, 'newPubKey123')).to.emit(recovery, 'RecoveryCompleted')
+
+        // Get new controller address
+        const [newController] = await ethers.getSigners()
+
+        // Guardians approve recovery
+        await recovery.connect(guardian1).approveRecovery(user.address)
+        await recovery.connect(guardian2).approveRecovery(user.address)
+
+        // Execute recovery
+        await expect(recovery.executeRecovery(user.address, newController.address, did))
+            .to.emit(recovery, 'RecoveryExecuted')
+            .withArgs(user.address, newController.address, did)
     })
 })

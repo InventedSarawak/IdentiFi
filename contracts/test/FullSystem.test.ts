@@ -38,8 +38,27 @@ describe('IdentiFi Full System', function () {
     })
 
     it('should complete full DID lifecycle', async () => {
-        await didRegistry.connect(user).registerDID('did:identifi:user1', 'pub123', 'ipfs://doc')
-        const doc = await didRegistry.getDID('did:identifi:user1')
-        expect(doc.controller).to.equal(user.address)
+        // Register DID
+        const did = 'did:identifi:user1'
+        await didRegistry.connect(user).registerDID(did, 'ipfs://doc', 'pub123')
+
+        // Resolve DID
+        const result = await didRegistry.resolveDID(did)
+        expect(result.controller).to.equal(user.address)
+        expect(result.publicKey).to.equal('pub123')
+
+        // Grant access permission
+        await accessControl.connect(user).grantAccess(verifier.address, 'email', 0, '')
+        expect(await accessControl.hasAccess(user.address, verifier.address, 'email')).to.be.true
+
+        // Add trusted issuer
+        await issuerRegistry.connect(user).addIssuer(verifier.address, 'ipfs://issuer-meta')
+        expect(await issuerRegistry.isTrusted(verifier.address)).to.be.true
+
+        // Anchor and revoke credential
+        const credHash = ethers.keccak256(ethers.toUtf8Bytes('credential123'))
+        await revocation.connect(verifier).anchorCredential(credHash, 'ipfs://cred')
+        await revocation.connect(verifier).revokeCredential(credHash, 'Test revocation')
+        expect(await revocation.isRevoked(credHash)).to.be.true
     })
 })
