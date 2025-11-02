@@ -11,9 +11,15 @@ importers:
       '@nomicfoundation/hardhat-ignition':
         specifier: ^3.0.3
         version: 3.0.3(@nomicfoundation/hardhat-verify@3.0.4(hardhat@3.0.10))(hardhat@3.0.10)
+      '@nomicfoundation/hardhat-ignition-ethers':
+        specifier: ^3.0.3
+        version: 3.0.3(@nomicfoundation/hardhat-ethers@4.0.2(hardhat@3.0.10))(@nomicfoundation/hardhat-ignition@3.0.3(@nomicfoundation/hardhat-verify@3.0.4(hardhat@3.0.10))(hardhat@3.0.10))(@nomicfoundation/hardhat-verify@3.0.4(hardhat@3.0.10))(@nomicfoundation/ignition-core@3.0.3)(ethers@6.15.0)(hardhat@3.0.10)
       '@nomicfoundation/hardhat-toolbox-mocha-ethers':
         specifier: ^3.0.0
         version: 3.0.0(2c5c22df8862e896c764b27e5d51805c)
+      '@openzeppelin/contracts':
+        specifier: ^5.4.0
+        version: 5.4.0
       '@types/chai':
         specifier: ^4.3.20
         version: 4.3.20
@@ -44,9 +50,6 @@ importers:
       mocha:
         specifier: ^11.7.4
         version: 11.7.4
-      prettier-plugin-solidity:
-        specifier: ^2.1.0
-        version: 2.1.0(prettier@2.8.8)
       typescript:
         specifier: ~5.8.0
         version: 5.8.3
@@ -55,9 +58,6 @@ packages:
 
   '@adraffy/ens-normalize@1.10.1':
     resolution: {integrity: sha512-96Z2IP3mYmF1Xg2cDm8f1gWGf/HUVedQ3FMifV4kG/PQ4yEP51xDtRAEfhVNt5f/uzpNkZHwWQuUcu6D6K+Ekw==}
-
-  '@bytecodealliance/preview2-shim@0.17.2':
-    resolution: {integrity: sha512-mNm/lblgES8UkVle8rGImXOz4TtL3eU3inHay/7TVchkKrb/lgcVvTK0+VAw8p5zQ0rgQsXm1j5dOlAAd+MeoA==}
 
   '@esbuild/aix-ppc64@0.25.11':
     resolution: {integrity: sha512-Xt1dOL13m8u0WE8iplx9Ibbm+hFAO0GsU2P34UNoDGvZYkY8ifSiy6Zuc1lYxfG7svWE2fzqCUmFp5HCn51gJg==}
@@ -426,9 +426,6 @@ packages:
   '@nomicfoundation/ignition-ui@3.0.3':
     resolution: {integrity: sha512-9xpwKi68P4ckMucpNnoKlDei2A3wgbPAnJN8ouYxGZpPtzT0kTfDtRCPAQEGqPoQiOWAn84jojVYrJmL+RQS+A==}
 
-  '@nomicfoundation/slang@1.2.0':
-    resolution: {integrity: sha512-+04Z1RHbbz0ldDbHKQFOzveCdI9Rd3TZZu7fno5hHy3OsqTo9UK5Jgqo68wMvRovCO99POv6oCEyO7+urGeN8Q==}
-
   '@nomicfoundation/solidity-analyzer-darwin-arm64@0.1.2':
     resolution: {integrity: sha512-JaqcWPDZENCvm++lFFGjrDd8mxtf+CtLd2MiXvMNTBD33dContTZ9TWETwNFwg7JTJT5Q9HEecH7FA+HTSsIUw==}
     engines: {node: '>= 12'}
@@ -461,6 +458,9 @@ packages:
     resolution: {integrity: sha512-q4n32/FNKIhQ3zQGGw5CvPF6GTvDCpYwIf7bEY/dZTZbgfDsHyjJwURxUJf3VQuuJj+fDIFl4+KkBVbw4Ef6jA==}
     engines: {node: '>= 12'}
 
+  '@openzeppelin/contracts@5.4.0':
+    resolution: {integrity: sha512-eCYgWnLg6WO+X52I16TZt8uEjbtdkgLC0SUX/xnAksjjrQI4Xfn4iBRoI5j55dmlOhDv1Y7BoR3cU7e3WWhC6A==}
+
   '@pkgjs/parseargs@0.11.0':
     resolution: {integrity: sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==}
     engines: {node: '>=14'}
@@ -480,9 +480,6 @@ packages:
   '@sentry/core@9.46.0':
     resolution: {integrity: sha512-it7JMFqxVproAgEtbLgCVBYtQ9fIb+Bu0JD+cEplTN/Ukpe6GaolyYib5geZqslVxhp2sQgT+58aGvfd/k0N8Q==}
     engines: {node: '>=18'}
-
-  '@solidity-parser/parser@0.20.2':
-    resolution: {integrity: sha512-rbu0bzwNvMcwAjH86hiEAcOeRI2EeK8zCkHDrFykh/Al8mvJeFmjy3UrE7GYQjNwOgbGUUtCn5/k8CB8zIu7QA==}
 
   '@streamparser/json-node@0.0.22':
     resolution: {integrity: sha512-sJT2ptNRwqB1lIsQrQlCoWk5rF4tif9wDh+7yluAGijJamAhrHGYpFB/Zg3hJeceoZypi74ftXk8DHzwYpbZSg==}
@@ -966,12 +963,6 @@ packages:
   picocolors@1.1.1:
     resolution: {integrity: sha512-xceH2snhtb5M9liqDsmEw56le376mTZkEX/jEb/RxNFyegNul7eNslCXP9FDj/Lcu0X8KEyMceP2ntpaHrDEVA==}
 
-  prettier-plugin-solidity@2.1.0:
-    resolution: {integrity: sha512-O5HX4/PCE5aqiaEiNGbSRLbSBZQ6kLswAav5LBSewwzhT+sZlN6iAaLZlZcJzPEnIAxwLEHP03xKEg92fflT9Q==}
-    engines: {node: '>=20'}
-    peerDependencies:
-      prettier: '>=3.0.0'
-
   prettier@2.8.8:
     resolution: {integrity: sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q==}
     engines: {node: '>=10.13.0'}
@@ -1210,8 +1201,6 @@ packages:
 snapshots:
 
   '@adraffy/ens-normalize@1.10.1': {}
-
-  '@bytecodealliance/preview2-shim@0.17.2': {}
 
   '@esbuild/aix-ppc64@0.25.11':
     optional: true
@@ -1663,10 +1652,6 @@ snapshots:
 
   '@nomicfoundation/ignition-ui@3.0.3': {}
 
-  '@nomicfoundation/slang@1.2.0':
-    dependencies:
-      '@bytecodealliance/preview2-shim': 0.17.2
-
   '@nomicfoundation/solidity-analyzer-darwin-arm64@0.1.2':
     optional: true
 
@@ -1698,6 +1683,8 @@ snapshots:
       '@nomicfoundation/solidity-analyzer-linux-x64-musl': 0.1.2
       '@nomicfoundation/solidity-analyzer-win32-x64-msvc': 0.1.2
 
+  '@openzeppelin/contracts@5.4.0': {}
+
   '@pkgjs/parseargs@0.11.0':
     optional: true
 
@@ -1717,8 +1704,6 @@ snapshots:
       '@scure/base': 1.1.9
 
   '@sentry/core@9.46.0': {}
-
-  '@solidity-parser/parser@0.20.2': {}
 
   '@streamparser/json-node@0.0.22':
     dependencies:
@@ -2223,13 +2208,6 @@ snapshots:
   pathval@2.0.1: {}
 
   picocolors@1.1.1: {}
-
-  prettier-plugin-solidity@2.1.0(prettier@2.8.8):
-    dependencies:
-      '@nomicfoundation/slang': 1.2.0
-      '@solidity-parser/parser': 0.20.2
-      prettier: 2.8.8
-      semver: 7.7.3
 
   prettier@2.8.8: {}
 

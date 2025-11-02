@@ -6,3 +6,6 @@ public
 build
 /.vscode
 .next
+/contracts/artifacts
+/contracts/cache
+/ignition/deployments

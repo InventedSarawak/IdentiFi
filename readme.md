@@ -173,7 +173,7 @@ The system follows a modular architecture combining blockchain smart contracts, 
 |    **Frontend**     | Next.js + wagmi/viem + web3modal                      |
 |     **Backend**     | Express.js (API, email)                               |
 |     **Storage**     | IPFS for PDFs, LocalStorage/IndexedDB for wallet data |
-|  **RPC Provider**   | Infura                                      |
+|  **RPC Provider**   | Infura                                                |
 |     **Crypto**      | Node.js crypto / tweetnacl for encryption and signing |
 
 ### Data Storage Design
