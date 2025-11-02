@@ -102,7 +102,7 @@
 
 - DIDRegistry ↔ Recovery Manager
 - AccessControl ↔ Permission Management
-- IssuerRegistry ↔ Trust Verification  
+- IssuerRegistry ↔ Trust Verification
 - RevocationRegistry ↔ Credential Status
 - RegistryHub ↔ Central Coordination
 

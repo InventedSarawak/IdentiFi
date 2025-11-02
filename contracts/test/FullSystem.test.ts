@@ -160,13 +160,12 @@ describe('IdentiFi Full System', function () {
     it('should handle complex permission scenarios', async () => {
         const [dataSubject, verifier1, verifier2, verifier3] = await ethers.getSigners()
 
-        // Grant various permissions with different expiry times
-        const now = Math.floor(Date.now() / 1000)
-        const shortExpiry = now + 60 // 1 minute
-        const longExpiry = now + 3600 // 1 hour
+        // Grant various permissions with different expiry times - use very large future values to avoid timing issues
+        const futureTime = 2000000000 // Year 2033 - well in the future
+        const veryFutureTime = 3000000000 // Year 2065 - even further in future
 
-        await accessControl.connect(dataSubject).grantAccess(verifier1.address, 'email', shortExpiry, 'short-consent')
-        await accessControl.connect(dataSubject).grantAccess(verifier2.address, 'phone', longExpiry, 'long-consent')
+        await accessControl.connect(dataSubject).grantAccess(verifier1.address, 'email', futureTime, 'future-consent')
+        await accessControl.connect(dataSubject).grantAccess(verifier2.address, 'phone', veryFutureTime, 'long-consent')
         await accessControl.connect(dataSubject).grantAccess(verifier3.address, 'address', 0, 'permanent-consent')
 
         // Test batch operations
@@ -175,7 +174,7 @@ describe('IdentiFi Full System', function () {
             .grantAccessBatch(
                 [verifier1.address, verifier2.address],
                 ['identity', 'nationality'],
-                [longExpiry, longExpiry],
+                [veryFutureTime, veryFutureTime],
                 ['batch-consent-1', 'batch-consent-2']
             )
 
