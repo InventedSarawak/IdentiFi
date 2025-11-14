@@ -2,7 +2,16 @@ import type { HardhatUserConfig } from 'hardhat/config'
 import HardhatIgnitionEthersPlugin from '@nomicfoundation/hardhat-ignition-ethers'
 
 import hardhatToolboxMochaEthersPlugin from '@nomicfoundation/hardhat-toolbox-mocha-ethers'
-import { configVariable } from 'hardhat/config'
+import dotenv from 'dotenv'
+import { resolve, dirname } from 'path'
+import { fileURLToPath } from 'url'
+
+// Get __dirname equivalent in ES modules
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
+
+// Load .env from parent directory
+dotenv.config({ path: resolve(__dirname, '../.env') })
 
 const config: HardhatUserConfig = {
     plugins: [hardhatToolboxMochaEthersPlugin, HardhatIgnitionEthersPlugin],
@@ -39,8 +48,8 @@ const config: HardhatUserConfig = {
         sepolia: {
             type: 'http',
             chainType: 'l1',
-            url: configVariable('SEPOLIA_RPC_URL'),
-            accounts: [configVariable('SEPOLIA_PRIVATE_KEY')]
+            url: process.env.SEPOLIA_RPC_URL!,
+            accounts: [process.env.SEPOLIA_PRIVATE_KEY!]
         }
     }
 }

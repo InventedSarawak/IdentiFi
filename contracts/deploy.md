@@ -88,12 +88,3 @@ npx hardhat test
 # Clean artifacts
 npx hardhat clean
 ```
-
-## Setup Checklist
-
-- [ ] Update SEPOLIA_RPC_URL in .env
-- [ ] Add SEPOLIA_PRIVATE_KEY in .env
-- [ ] Add ETHERSCAN_API_KEY in .env
-- [ ] Get Sepolia ETH from faucet
-- [ ] Test network connection
-- [ ] Deploy and verify a test contract
