@@ -1,0 +1,12 @@
+{
+    "RecoveryModule": {
+        "didRegistryAddress": "0x5AD53E36DC633dA268a2a2D41Db4597eCCa2FD60"
+    },
+    "RegistryHubModule": {
+        "didRegistryAddress": "0x5AD53E36DC633dA268a2a2D41Db4597eCCa2FD60",
+        "accessControlAddress": "0x09386Ab6052C2d3201B8e3794856092aC211cBA2",
+        "recoveryAddress": "0x57779c28987Ce6d3e61003EECf6D182e103e4Ab5",
+        "revocationRegistryAddress": "0xd84d6ccF902765089266DE90f7e61D1b355c8194",
+        "issuerRegistryAddress": "0x20053CD7C9527288d08D193bd4CdDe0A17778194"
+    }
+}
